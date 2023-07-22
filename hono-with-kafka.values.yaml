@@ -1,0 +1,41 @@
+
+adapters:
+  http:
+    enabled: true
+    tlsKeysSecret: "eclipse-hono-adapter-http-tls-keys"
+    tlsTrustStoreConfigMap: "hono-truststore"
+  coap:
+    enabled: true
+    tlsKeysSecret: "eclipse-hono-adapter-coap-tls-keys"
+    tlsTrustStoreConfigMap: "hono-truststore"
+    hono:
+      coap:
+        insecurePortEnabled: true
+        insecurePortBindAddress: "0.0.0.0"
+        authenticationRequired: false
+  mqtt:
+    enabled: false
+  amqp:
+    enabled: false
+
+authServer:
+  tlsKeysSecret: "eclipse-hono-service-auth-tls-keys"
+  tlsTrustStoreConfigMap: "hono-truststore"
+
+commandRouterService:
+  tlsKeysSecret: "eclipse-hono-service-command-router-tls-keys"
+  tlsTrustStoreConfigMap: "hono-truststore"
+  
+deviceRegistryExample:
+  enabled: true
+  tlsKeysSecret: "eclipse-hono-service-device-registry-tls-keys"
+  tlsTrustStoreConfigMap: "hono-truststore"
+
+kafkaMessagingClusterExample:
+  enabled: true
+
+kafka:
+  auth:
+    tls:
+      existingSecrets:
+      - "eclipse-hono-kafka-tls-keys"

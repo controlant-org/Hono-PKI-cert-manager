@@ -1,0 +1,191 @@
+
+# CoAP Adapter
+
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: eclipse-hono-adapter-coap
+  namespace: hono
+spec:
+  duration: 2h
+  renewBefore: 1h
+  commonName: coap-adapter
+  secretName: eclipse-hono-adapter-coap-tls-keys
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "eclipse-hono-adapter-coap"
+    - "eclipse-hono-adapter-coap.hono"
+    - "localhost"
+  usages:
+    - server auth
+    - client auth
+    - key agreement
+    - digital signature
+    - key encipherment
+  issuerRef:
+    name: hono-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+
+---
+
+# HTTP Adapter
+
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: eclipse-hono-adapter-http
+  namespace: hono
+spec:
+  duration: 2h
+  renewBefore: 1h
+  commonName: http-adapter
+  secretName: eclipse-hono-adapter-http-tls-keys
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "eclipse-hono-adapter-http"
+    - "eclipse-hono-adapter-http.hono"
+    - "localhost"
+  usages:
+    - server auth
+    - client auth
+    - key agreement
+    - digital signature
+    - key encipherment
+  issuerRef:
+    name: hono-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+
+---
+
+# Auth Service
+
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: eclipse-hono-service-auth
+  namespace: hono
+spec:
+  duration: 2h
+  renewBefore: 1h
+  commonName: auth-service
+  secretName: eclipse-hono-service-auth-tls-keys
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "eclipse-hono-service-auth"
+    - "eclipse-hono-service-auth.hono"
+    - "localhost"
+  usages:
+    - server auth
+    - client auth
+    - key agreement
+    - digital signature
+    - key encipherment
+  issuerRef:
+    name: hono-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+
+---
+
+# Command Router Service
+
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: eclipse-hono-service-command-router
+  namespace: hono
+spec:
+  duration: 2h
+  renewBefore: 1h
+  commonName: command-router-service
+  secretName: eclipse-hono-service-command-router-tls-keys
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "eclipse-hono-service-command-router"
+    - "eclipse-hono-service-command-router.hono"
+    - "localhost"
+  usages:
+    - server auth
+    - client auth
+    - key agreement
+    - digital signature
+    - key encipherment
+  issuerRef:
+    name: hono-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+
+---
+
+# Device Registry Service
+
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: eclipse-hono-service-device-registry
+  namespace: hono
+spec:
+  duration: 2h
+  renewBefore: 1h
+  commonName: device-registry-service
+  secretName: eclipse-hono-service-device-registry-tls-keys
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "eclipse-hono-service-device-registry"
+    - "eclipse-hono-service-device-registry.hono"
+    - "localhost"
+  usages:
+    - server auth
+    - client auth
+    - key agreement
+    - digital signature
+    - key encipherment
+  issuerRef:
+    name: hono-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+
+---
+
+# Kafka
+
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: eclipse-hono-kafka
+  namespace: hono
+spec:
+  duration: 2h
+  renewBefore: 1h
+  commonName: kafka
+  secretName: eclipse-hono-kafka-tls-keys
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  dnsNames:
+    - "*.eclipse-hono-kafka-headless"
+    - "*.eclipse-hono-kafka-headless-hono"
+    - "localhost"
+  usages:
+    - server auth
+    - client auth
+    - key agreement
+    - digital signature
+    - key encipherment
+  issuerRef:
+    name: hono-ca-issuer
+    kind: Issuer
+    group: cert-manager.io
+
