@@ -163,7 +163,7 @@ This step can be applied by executing the following command:
 kubectl apply --values 05_hono_bundle.yaml
 ```
 
-All definitions for this step are in [05_hono_budle.yaml](./05_hono_bundle.yaml).
+All definitions for this step are in [05_hono_bundle.yaml](./05_hono_bundle.yaml).
 
 #### Detailed explanation
 
