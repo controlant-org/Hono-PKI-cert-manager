@@ -136,7 +136,7 @@ This step can be applied by executing the following command:
 kubectl apply --values 04_hono_certs.yaml
 ```
 
-All definitions for this step are in [04_hono_certs.yaml](./04_hono_certs.yaml.)
+All definitions for this step are in [04_hono_certs.yaml](./04_hono_certs.yaml).
 
 #### Detailed explanation
 
