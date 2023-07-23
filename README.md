@@ -80,11 +80,12 @@ This step can be applied by executing the following command:
 kubectl apply --values 01_bootstrap.yaml
 ```
 
+All definitions for this step are in [01_bootstrap.yaml](./01_bootstrap.yaml).
+
 #### Detailed explanation
 
 We assume we will install Eclipse Hono into the `hono` namespace in Kubernetes. We therefore create that namespace in advance because we will need to add some resources to it prior to installing Hono.
 
-The 
 
 ### 02 Create the root CA certificate and root issuer
 
@@ -93,6 +94,8 @@ This step can be applied by executing the following command:
 ```bash
 kubectl apply --values 02_root_issuer.yaml
 ```
+
+All definitions for this step are in [02_root_issuer.yaml](./02_root_issuer.yaml).
 
 #### Detailed explanation
 
@@ -116,6 +119,8 @@ This step can be applied by executing the following command:
 kubectl apply --values 03_hono_issuer.yaml
 ```
 
+All definitions for this step are in [03_hono_issuer.yaml](./03_hono_issuer.yaml).
+
 #### Detailed explanation
 
 In order to issue certificates for Hono components we want to create a dedicated Certificate Authority (CA) issuer for that purpose. This is done by defining an issuer of type `Issuer` which is also a CRD defined by `cert-manager` but differs from `ClusterIssuer` in that it is confined to a single k8s namespace (`hono` in our case). The name of this issuer is `hono-ca-issuer`.
@@ -130,6 +135,8 @@ This step can be applied by executing the following command:
 ```bash
 kubectl apply --values 04_hono_certs.yaml
 ```
+
+All definitions for this step are in [04_hono_certs.yaml](./04_hono_certs.yaml.)
 
 #### Detailed explanation
 
@@ -148,7 +155,6 @@ The list of certificates (and generated secrets) that are defined are:
 * `eclipse-hono-kafka` (generates the secret `eclipse-hono-kafka-tls-keys`)
 
 
-
 ### 05 Create the Hono CA trust bundle
 
 This step can be applied by executing the following command:
@@ -156,6 +162,8 @@ This step can be applied by executing the following command:
 ```bash
 kubectl apply --values 05_hono_bundle.yaml
 ```
+
+All definitions for this step are in [05_hono_budle.yaml](./05_hono_bundle.yaml).
 
 #### Detailed explanation
 
