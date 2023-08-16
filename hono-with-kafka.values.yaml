@@ -4,6 +4,9 @@ adapters:
     enabled: true
     tlsKeysSecret: "eclipse-hono-adapter-http-tls-keys"
     tlsTrustStoreConfigMap: "hono-truststore"
+    deployment:
+      annotations:
+        secret.reloader.stakater.com/reload: "eclipse-hono-adapter-http-tls-keys"
   coap:
     enabled: true
     tlsKeysSecret: "eclipse-hono-adapter-coap-tls-keys"
@@ -13,6 +16,9 @@ adapters:
         insecurePortEnabled: true
         insecurePortBindAddress: "0.0.0.0"
         authenticationRequired: false
+    deployment:
+      annotations:
+        secret.reloader.stakater.com/reload: "eclipse-hono-adapter-coap-tls-keys"
   mqtt:
     enabled: false
   amqp:
@@ -21,20 +27,38 @@ adapters:
 authServer:
   tlsKeysSecret: "eclipse-hono-service-auth-tls-keys"
   tlsTrustStoreConfigMap: "hono-truststore"
+  deployment:
+    annotations:
+      secret.reloader.stakater.com/reload: "eclipse-hono-service-auth-tls-keys"
 
 commandRouterService:
   tlsKeysSecret: "eclipse-hono-service-command-router-tls-keys"
   tlsTrustStoreConfigMap: "hono-truststore"
+  deployment:
+    annotations:
+      secret.reloader.stakater.com/reload: "eclipse-hono-service-command-router-tls-keys"
   
 deviceRegistryExample:
   enabled: true
+  type: "mongodb"
   tlsKeysSecret: "eclipse-hono-service-device-registry-tls-keys"
   tlsTrustStoreConfigMap: "hono-truststore"
+  mongoDBBasedDeviceRegistry:
+    deployment:
+      annotations:
+        secret.reloader.stakater.com/reload: "eclipse-hono-service-device-registry-tls-keys"
+
+mongodb:
+  createInstance: true
+  persistence:
+    enabled: true
 
 kafkaMessagingClusterExample:
   enabled: true
 
 kafka:
+  commonAnnotations:
+    secret.reloader.stakater.com/reload: "eclipse-hono-kafka-tls-keys"
   auth:
     tls:
       existingSecrets:

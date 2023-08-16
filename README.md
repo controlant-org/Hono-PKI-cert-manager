@@ -39,6 +39,7 @@ This demo installation project requires the following extensions to be installed
 | [cert-manager](https://cert-manager.io) | `ClusterIssuer`, `Issuer`, `Certificate` | A Kubernetes operator that manages certificates and certificate issuance. It supports pluggable issuer backends, including an embedded one, AWS Private CA, Vault, and more |
 | [trust-manager](https://cert-manager.io/docs/projects/trust-manager/) | `Bundle` | A Kubernetes operator that orchestrates bundles of trusted X.509 certificates and the distribution of those bundles within the k8s cluster  |
 | [reflector](https://github.com/emberstack/kubernetes-reflector/) | none (acts on `reflector.v1.k8s.emberstack.com` annotations on `Secret` and `ConfigMap` resources) | A Kubernetes operator that can keep k8s resources such as Secrets and ConfigMaps in sync across multiple namespaces |
+| [reloader](https://github.com/stakater/Reloader) | none (acts on `reloader.stakater.com` annotations on various k8s resources) | A Kubernetes operator that reloads various Kubernetes resources (`Deployment`, `Statefulset`, `Daemonset`, etc) when other resources that they depend on (`ConfigMap`, `Secret`) is updated |
 
 To install these operators:
 
@@ -47,6 +48,7 @@ To install these operators:
 
 helm repo add jetstack https://charts.jetstack.io
 helm repo add emberstack https://emberstack.github.io/helm-charts
+helm repo add stakater https://stakater.github.io/stakater-charts
 helm repo update
 
 # Install cert-manager
@@ -68,6 +70,12 @@ helm upgrade --install \
 # Install reflector extension
 helm upgrade --install \
   reflector emberstack/reflector \
+  --namespace cert-manager \
+  --wait
+
+# Install reloader extension
+helm upgrade --install \
+  reloader stakater/reloader \
   --namespace cert-manager \
   --wait
 ```

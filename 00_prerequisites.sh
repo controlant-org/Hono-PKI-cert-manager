@@ -16,6 +16,7 @@ fi
 
 helm repo add jetstack https://charts.jetstack.io
 helm repo add emberstack https://emberstack.github.io/helm-charts
+helm repo add stakater https://stakater.github.io/stakater-charts
 helm repo update
 
 # Install cert-manager
@@ -42,5 +43,11 @@ echo "Finished installing trust-manager"
 # Install reflector extension
 helm upgrade --install \
   reflector emberstack/reflector \
+  --namespace cert-manager \
+  --wait
+
+# Install reloader extension
+helm upgrade --install \
+  reloader stakater/reloader \
   --namespace cert-manager \
   --wait
